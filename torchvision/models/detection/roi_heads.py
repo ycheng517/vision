@@ -778,7 +778,9 @@ class RoIHeads(torch.nn.Module):
                 pos_matched_idxs = []
                 for img_id in range(num_images):
                     pos = torch.nonzero(labels[img_id] > 0).squeeze(1)
-                    mask_proposals.append(proposals[img_id][pos])
+                    proposal = proposals[img_id][pos]
+                    print(proposal)
+                    mask_proposals.append(proposal)
                     pos_matched_idxs.append(matched_idxs[img_id][pos])
             else:
                 pos_matched_idxs = None
